@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const sessions = require('./get_sessions')
+const engagment = require('./get_engagment')
 const app = express();
 
 app.use(cors())
@@ -23,9 +24,9 @@ app.post('/test', googlea);
 
 
 function googlea(req, res) {
-    () => sessions.get_sessions(req, res);
+    sessions.get_sessions(req, res);
     //() => get_prospects(req, res);
-    () => needed.get_engagement(req, res);
+    engagment.get_engagments(req, res);
 }
 
 const port = 5000;

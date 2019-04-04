@@ -34,8 +34,8 @@ async function get_sessions(req, res) {
         }})
         console.log("reponse google");
         tab_data.push([m.format('YYYY-MM-DD'), data.reports[0].data.totals[0].values]);
+        console.log(tab_data);
     }
-
     csvWriter.writeRecords(tab_data)
     .then(() => {
         console.log('...Done');
