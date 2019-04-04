@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require('cors');
-const sessions = require('./get_sessions')
-const engagment = require('./get_engagment')
+const sessions = require('./googlean/get_sessions')
+const engagment = require('./googlean/get_engagment')
+const prospect = require('./googlean/get_prospect')
 const app = express();
 
 app.use(cors())
@@ -20,12 +21,13 @@ app.use(function (req, res, next) {
   });
   app.use(urlencodedParser);
   app.use(bodyParser.json());
-app.post('/test', googlea);
 
+app.post('/googleanalytique', googleana);
+app.post('/googleads', googleads);
 
-function googlea(req, res) {
+function googleana(req, res) {
     sessions.get_sessions(req, res);
-    //() => get_prospects(req, res);
+    //prospect.get_prospects(req, res);
     engagment.get_engagments(req, res);
 }
 

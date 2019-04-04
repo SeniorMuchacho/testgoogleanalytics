@@ -8,7 +8,6 @@ const csvWriter = createCsvWriter({
     path: 'nb_of_engagements.csv'
 });
 
-
 const viewId = "169170166"
 
 async function get_engagments(req, res) {
@@ -52,7 +51,6 @@ async function get_engagments(req, res) {
                 tab_data.push([m.format('YYYY-MM-DD'),data.reports[0].data.rows[0].metrics[0].values, data.reports[0].data.rows[1].metrics[0].values, data.reports[0].data.rows[2].metrics[0].values]);
             }
         }
-
     }
 
     csvWriter.writeRecords(tab_data)
