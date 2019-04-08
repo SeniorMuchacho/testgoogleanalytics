@@ -11,8 +11,8 @@ const csvWriter = createCsvWriter({
 const viewId = "169170166"
 
 async function get_engagments(req, res) {
-    let start_date = moment('2018-01-01');
-    let end_date = moment('2019-04-03');
+    let start_date = moment('2019-02-01');
+    let end_date = moment('2019-02-28');
     let tab_data = []
     
     for (let m = moment(start_date); m.isBefore(end_date); m.add(1, 'days')) {
@@ -36,7 +36,7 @@ async function get_engagments(req, res) {
         Authorization: `Bearer ${req.body.data.Zi.access_token}`
         }})
 
-        console.log("reponse google engagment", m.format('YYYY-MM-DD'));
+        //console.log("reponse google engagment", m.format('YYYY-MM-DD'));
         if (!data.reports[0].data.hasOwnProperty("rows")) {
             tab_data.push([m.format('YYYY-MM-DD'), 0, 0, 0]);
         }

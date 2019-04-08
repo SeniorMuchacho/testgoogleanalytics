@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import axios from 'axios'
-
-
-
 
 class Googlean extends Component {
   render() {
@@ -31,6 +29,28 @@ class Googlean extends Component {
   }
 }
 
+class Facebook extends Component {
+  render() {
+        const responseFacebook = (response) => {
+        const data = axios.post("http://localhost:5000/facebookads", {
+          'data' : response
+        }, 
+        {
+          headers:{'Content-Type' : 'application/json'}
+        });
+    }
+    return (
+      <div>
+        Facebook Login <br/>
+        <FacebookLogin
+          appId="2192204914365061"
+          autoLoad={false}
+          fields="name,email,picture"
+          callback={responseFacebook} />
+      </div>
+    );
+  }
+}
 
 class Googleads extends Component {
   render() {
@@ -57,14 +77,13 @@ class Googleads extends Component {
   }
 }
 
-
-
 class App extends Component {
   render(){
     return (
       <div> 
         <Googlean/>
         <Googleads/>
+        <Facebook/>
       </div>
     );
   }
